@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.PrestatiesFragment">
+
+        <TextView
+            android:id="@+id/textAch6"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="4dp"
+            android:text="bezoek 1 land in elk continent"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textAch5" />
+
+        <TextView
+            android:id="@+id/textAch5"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="4dp"
+            android:text="geef een land een score van 0/5"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textAch4" />
+
+        <TextView
+            android:id="@+id/textAch4"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="8dp"
+            android:text="geef een land een score van 5/5"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textAch3" />
+
+        <TextView
+            android:id="@+id/textAch3"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="8dp"
+            android:text="bezoek 5 landen in hetzelfde jaar"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textAch2" />
+
+        <TextView
+            android:id="@+id/textAch2"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="4dp"
+            android:text="bezoek 5 landen binnen Europa"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textAch1" />
+
+        <TextView
+            android:id="@+id/textAch1"
+            android:layout_width="0dp"
+            android:layout_height="66dp"
+            android:lineSpacingExtra="8sp"
+            android:text="bezoek 10 verschillende landen"
+            android:textAlignment="textStart"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
