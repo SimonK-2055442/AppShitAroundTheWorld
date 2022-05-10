@@ -1,11 +1,13 @@
 package com.example.appshitaroundtheworld
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appshitaroundtheworld.databinding.ActivityMainBinding
 import com.example.appshitaroundtheworld.model.Persoon
 import com.google.android.material.snackbar.Snackbar
+import android.content.SharedPreferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val Simon = Persoon("Simon", "IkBenGay")
         gebruikersLijst.add(Sander)
         gebruikersLijst.add(Simon)
-        var ingelogdePersoon: Persoon = Persoon("","")
+        var ingelogdePersoon: Persoon = Persoon("", "")
 
         binding.logIn.setOnClickListener {
 
@@ -50,18 +52,29 @@ class MainActivity : AppCompatActivity() {
             var naam = binding.naam.text.toString()
             var code = binding.code.text.toString()
 
-            //inhoud.forEach() { Persoon ->
-            //if (!naam.contentEquals(Persoon.naam)) {
-            var persoon = Persoon(naam, code)
-            gebruikersLijst.add(persoon)
-            //}
-            /*else{
+            if (!alInSysteem(naam, gebruikersLijst)) {
+                var persoon = Persoon(naam, code)
+                gebruikersLijst.add(persoon)
+                /*val sharedPref = MainActivity.getPreferences(Context.MODE_PRIVATE) ?: return
+                with (sharedPref.edit()) {
+                    putString("key", "Hi, I'm a value!")
+                    apply()
+                }*/
+            } else {
                 Snackbar
-                    .make(it, "fout", Snackbar.LENGTH_LONG)
+                    .make(it, "Al in systeem", Snackbar.LENGTH_LONG)
                     .show()
             }
 
-        }*/
         }
     }
+}
+
+    private fun alInSysteem(naam: String, gebruikersLijst: MutableList<Persoon>):Boolean {
+        gebruikersLijst.forEach() { Persoon ->
+            if (naam.contentEquals(Persoon.naam)) {
+                return true
+            }
+    }
+        return false
 }

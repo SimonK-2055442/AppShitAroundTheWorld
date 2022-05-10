@@ -52,10 +52,10 @@ tools:context=".fragments.HomeFragment">
         android:text="Voeg toe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.716"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.693" />
+        app:layout_constraintVertical_bias="0.623" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -119,5 +119,28 @@ tools:context=".fragments.HomeFragment">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.158" />
+
+    <Button
+        android:id="@+id/locatieKnop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="locatie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.623" />
+
+    <TextView
+        android:id="@+id/locatieText"
+        android:layout_width="139dp"
+        android:layout_height="39dp"
+        android:text="locatie: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

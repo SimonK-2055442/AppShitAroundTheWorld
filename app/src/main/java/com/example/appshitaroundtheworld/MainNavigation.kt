@@ -26,7 +26,6 @@ class MainNavigation : AppCompatActivity() {
         val mapsFragment = MapsFragment(sharedData)
 
 
-
         binding = ActivityMainNavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

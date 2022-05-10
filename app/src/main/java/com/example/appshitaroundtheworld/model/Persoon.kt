@@ -6,13 +6,16 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class Persoon(val naam:String, val code:String): java.io.Serializable {
-    //naam: String = naam
-    //code: String = code
     var landenLijst: ArrayList<Land> = ArrayList()
     var behaaldeAchievements: ArrayList<Int> = ArrayList()
-    var besteLand: Land = Land("",0.0,"",0,0,0,0.0,0.0)
-    var slechtsteLand: Land = Land("",0.0,"",0,0,0,0.0,0.0)
+    var besteLand: Land = Land("",0.1,"",0,0,0,0.0,0.0)
+    var slechtsteLand: Land = Land("",4.9,"",0,0,0,0.0,0.0)
 
+    fun voegLandToe(nieuwLand: Land){
+        landenLijst.add(nieuwLand)
+        isBesteLand(nieuwLand, besteLand)
+        isSlechtsteLand(nieuwLand, slechtsteLand)
+    }
 
     fun isBesteLand(nieuwLand:Land, voorlopigBesteLand: Land){
         val besteRating = voorlopigBesteLand.rating;
@@ -25,7 +28,7 @@ class Persoon(val naam:String, val code:String): java.io.Serializable {
     fun isSlechtsteLand(nieuwLand:Land, voorlopigSlechtsteLand: Land){
         val slechtsteRating = voorlopigSlechtsteLand.rating;
         val dezeRating = nieuwLand.rating;
-        if(dezeRating > slechtsteRating){
+        if(dezeRating < slechtsteRating){
             slechtsteLand = nieuwLand;
         }
     }
