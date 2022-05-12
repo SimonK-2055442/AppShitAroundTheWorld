@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
+import com.example.appshitaroundtheworld.MainActivity
 import com.example.appshitaroundtheworld.R
 import com.example.appshitaroundtheworld.databinding.FragmentNieuwLandBinding
 import com.example.appshitaroundtheworld.model.Land

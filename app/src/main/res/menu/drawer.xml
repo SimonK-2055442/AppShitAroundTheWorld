@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_nieuweBestemming"
+            android:icon="@drawable/ic_add"
+            android:title="Nieuwe besteming" />
+
+        <item
+            android:id="@+id/nav_vorigeBestemmingen"
+            android:icon="@drawable/ic_land"
+            android:title="Vorige bestemingen" />
+
+        <item
+            android:id="@+id/nav_prestaties"
+            android:icon="@drawable/ic_prestaties"
+            android:title="Prestaties" />
+
+        <item
+            android:id="@+id/nav_maps"
+            android:icon="@drawable/ic_pin"
+            android:title="Map" />
+
+
+    </group>
+</menu>
