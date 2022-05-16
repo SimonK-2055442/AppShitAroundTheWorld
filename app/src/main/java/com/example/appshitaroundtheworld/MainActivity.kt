@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         var ingelogdePersoon: Persoon = Persoon("", "")
-        getData()
+        //getData()
 
         binding.logIn.setOnClickListener {
 

@@ -23,7 +23,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA47W4JXVQO4M2sLVOfiw31iNFX0Q1Nb-8" />
+            android:value="${MAPS_API_KEY}" />
 
         <activity
             android:name=".MainNavigation"
