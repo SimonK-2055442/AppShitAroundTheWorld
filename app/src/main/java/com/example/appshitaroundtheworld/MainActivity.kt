@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.appshitaroundtheworld.databinding.ActivityMainBinding
 import com.example.appshitaroundtheworld.model.Persoon
+import com.example.appshitaroundtheworld.model.Geheugen
 import com.google.android.material.snackbar.Snackbar
 import android.content.SharedPreferences
 import com.google.gson.Gson
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var gebruikersLijst: MutableList<Persoon> = mutableListOf()
     val gson = Gson()
+    val geheugen : Geheugen = Geheugen()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -23,8 +25,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         var ingelogdePersoon: Persoon = Persoon("", "")
-        getData()
-
+        val sharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
+        val sharedPreferencesNamenlijst = getSharedPreferences("namenlijst", Context.MODE_PRIVATE)
+        //geheugen.getData(sharedPreferences, sharedPreferencesNamenlijst, gebruikersLijst)
         binding.logIn.setOnClickListener {
 
             var naam = binding.naam.text.toString()
@@ -63,49 +66,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveData(persoon: Persoon, sharedPreferences:SharedPreferences) {
-        val opTeSlaanPersoon = gson.toJson(persoon)
-        val editor = sharedPreferences.edit()
-        editor.apply{
-            putString(persoon.naam, opTeSlaanPersoon)
-        }.apply()
-    }
-
-    private fun getData(){
-        val sharedPreferencesNamenlijst = getSharedPreferences("namenlijst", Context.MODE_PRIVATE)
-        val sharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
-        val savedNamenLijst = sharedPreferencesNamenlijst.getString("Lijstnaam", null)
-
-        var namenString: List<String> = savedNamenLijst!!.split("/")
-        namenString.forEach() {
-            if (!(it == "")) {
-                val savedString = sharedPreferences.getString(it, null)
-                val gebruiker = gson.fromJson(savedString, Persoon::class.java)
-                gebruikersLijst.add(gebruiker)
-            }
-        }
-    }
-
-    private fun saveNamenLijst(lijst: String, sharedPreferences: SharedPreferences){
-        val editor = sharedPreferences.edit()
-        editor.apply{
-            putString("Lijstnaam", lijst )
-        }.apply()
-    }
-
-    private fun opslaan(){
-        val sharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
-        val sharedPreferencesNamenlijst = getSharedPreferences("namenlijst", Context.MODE_PRIVATE)
-        var namenlijst = ""
-        gebruikersLijst.forEach() { Persoon ->
-            saveData(Persoon, sharedPreferences)
-            namenlijst = namenlijst + Persoon.naam + "/"
-        }
-        saveNamenLijst(namenlijst, sharedPreferencesNamenlijst)
-    }
-
     override fun onDestroy(){
-        opslaan()
+        val sharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
+        val sharedPreferencesNamenlijst = getSharedPreferences("namenlijst", Context.MODE_PRIVATE)
+        //geheugen.opslaan(sharedPreferences, sharedPreferencesNamenlijst, gebruikersLijst)
         super.onDestroy()
     }
 }
