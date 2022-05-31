@@ -11,11 +11,13 @@ class Persoon(val naam:String, val code:String): java.io.Serializable {
     var behaaldeAchievements: ArrayList<Int> = ArrayList()
     var besteLand: Land = Land("",0.1,"",0,0,0,0.0,0.0, false)
     var slechtsteLand: Land = Land("",4.9,"",0,0,0,0.0,0.0, false)
+    var nieuwJaarsKakje : Boolean = false;
 
     fun voegLandToe(nieuwLand: Land){
         landenLijst.add(nieuwLand)
         isBesteLand(nieuwLand, besteLand)
         isSlechtsteLand(nieuwLand, slechtsteLand)
+        nieuwJaarsKakjeFunctie(nieuwLand)
     }
 
     fun isBesteLand(nieuwLand:Land, voorlopigBesteLand: Land){
@@ -60,11 +62,19 @@ class Persoon(val naam:String, val code:String): java.io.Serializable {
         return maxInJaar
     }
 
+    fun nieuwJaarsKakjeFunctie(land : Land){
+        if(land.dag == 1 && land.maand == 1){
+            nieuwJaarsKakje = true
+        }
+    }
+
+
+
     fun achievementCheck(){
         if (aantalLandenBezocht() >= 10 && !behaaldeAchievements.contains(1)){
             behaaldeAchievements.add(1);
         }
-        if (aantalLandenBezocht() >= 5 && !behaaldeAchievements.contains(2) /* && methode implementeren om te kijken of deze landen binnen europa liggen*/){
+        if (aantalLandenBezocht() >= 5 && !behaaldeAchievements.contains(2)){
             behaaldeAchievements.add(2);
         }
         if (aantalLandenBezochtIn1Jaar() >= 5 && !behaaldeAchievements.contains(3)){
@@ -76,9 +86,9 @@ class Persoon(val naam:String, val code:String): java.io.Serializable {
         if (slechtsteLand.rating == 0.0 && !behaaldeAchievements.contains(5)){
             behaaldeAchievements.add(5);
         }
-        //if (//zelfde doen als max in een jaar maar eerst methode implementeren voor continent, dan dus lijst met continenten en kijken of freq van elk continent groter is dan 0){
-        //behaaldeAchievements.add(6);
-        //}
+        if (nieuwJaarsKakje && !behaaldeAchievements.contains(6)){
+            behaaldeAchievements.add(6);
+        }
     }
 
 }

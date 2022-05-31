@@ -44,20 +44,23 @@ class Geheugen {
         }
         gebruikersLijst.add(ingelogdePersoon)
         opslaan(sharedPreferences, sharedPreferencesNamenlijst, gebruikersLijst)
-        var treu = gebruikersLijst.contains(ingelogdePersoon)
     }
 
     fun getData(sharedPreferences: SharedPreferences,  sharedPreferencesNamenlijst : SharedPreferences, gebruikersLijst : MutableList<Persoon>){
-        val savedNamenLijst = sharedPreferencesNamenlijst.getString("Lijstnaam", null)
-        var namenString: List<String> = savedNamenLijst!!.split("/")
-        namenString.forEach() {
-            if (!(it == "")) {
-                val savedString = sharedPreferences.getString(it, null)
-                val gebruiker = gson.fromJson(savedString, Persoon::class.java)
-                gebruikersLijst.add(gebruiker)
+        if(sharedPreferencesNamenlijst.contains("Lijstnaam")) {
+            val savedNamenLijst = sharedPreferencesNamenlijst.getString("Lijstnaam", null)
+            var namenString: List<String> = savedNamenLijst!!.split("/")
+            namenString.forEach() {
+                if (!(it == "")&&sharedPreferences.contains(it)) {
+                    val savedString = sharedPreferences.getString(it, null)
+                    val gebruiker = gson.fromJson(savedString, Persoon::class.java)
+                    gebruikersLijst.add(gebruiker)
+                }
             }
         }
-        /*val editor = sharedPreferences.edit()
+    }
+    fun deleteData(sharedPreferences: SharedPreferences,  sharedPreferencesNamenlijst : SharedPreferences){
+        val editor = sharedPreferences.edit()
         editor.apply{
             editor.clear()
         }.apply()
@@ -65,6 +68,6 @@ class Geheugen {
         val editors = sharedPreferencesNamenlijst.edit()
         editors.apply{
             editors.clear()
-        }.apply()*/
+        }.apply()
     }
 }

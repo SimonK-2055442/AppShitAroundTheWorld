@@ -24,7 +24,7 @@ class TodoAdapter(val items: List<Land>) : RecyclerView.Adapter<TodoAdapter.Todo
             var datum: String = (currentTodoItem.dag.toString() + "/" + currentTodoItem.maand.toString() + "/" + currentTodoItem.jaar.toString())
             findViewById<TextView>(R.id.datum).text = datum
             findViewById<RatingBar>(R.id.ratingBar).rating = currentTodoItem.rating.toFloat()
-
+            findViewById<TextView>(R.id.commentaar).text = currentTodoItem.comment
         }
     }
 

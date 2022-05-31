@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         var ingelogdePersoon: Persoon = Persoon("", "")
         val sharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
         val sharedPreferencesNamenlijst = getSharedPreferences("namenlijst", Context.MODE_PRIVATE)
-        //geheugen.getData(sharedPreferences, sharedPreferencesNamenlijst, gebruikersLijst)
+        geheugen.getData(sharedPreferences, sharedPreferencesNamenlijst, gebruikersLijst)
         binding.logIn.setOnClickListener {
 
             var naam = binding.naam.text.toString()
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
             if (!inSysteem) {
                 Snackbar
-                    .make(it, "fout", Snackbar.LENGTH_LONG)
+                    .make(it, "Gebruiker bestaat niet of wachtwoord is fout", Snackbar.LENGTH_LONG)
                     .show()
             }
         }
@@ -58,19 +58,15 @@ class MainActivity : AppCompatActivity() {
             if (!alInSysteem(naam, gebruikersLijst)) {
                 var persoon = Persoon(naam, code)
                 gebruikersLijst.add(persoon)
+                val sharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
+                val sharedPreferencesNamenlijst = getSharedPreferences("namenlijst", Context.MODE_PRIVATE)
+                geheugen.opslaan(sharedPreferences, sharedPreferencesNamenlijst, gebruikersLijst)
             } else {
                 Snackbar
-                    .make(it, "Al in systeem", Snackbar.LENGTH_LONG)
+                    .make(it, "Gebruiker bestaat al", Snackbar.LENGTH_LONG)
                     .show()
             }
         }
-    }
-
-    override fun onDestroy(){
-        val sharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE)
-        val sharedPreferencesNamenlijst = getSharedPreferences("namenlijst", Context.MODE_PRIVATE)
-        //geheugen.opslaan(sharedPreferences, sharedPreferencesNamenlijst, gebruikersLijst)
-        super.onDestroy()
     }
 }
 
